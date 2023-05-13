@@ -33,18 +33,25 @@ inquirer
   ])
   .then((answers) => {
     const svg = generateSVG(answers);
-    saveSVG(svgFile);
+    saveSVG(svg);
     console.log(answers);
   });
-
-  function generateSVG(answers) {
-    const {logoText, logoColor, logoShape, shapeColor} = answers;
+  
+function generateSVG(answers) {
+    const { logoText, logoColor, logoShape, shapeColor } = answers;
     const shape = getShape(logoShape, shapeColor);
-    const svgFile = `<svg><rect fill="${shapeColor}" width="100" height="100"/><text fill="${logoColor}" x="20" y="60">${logoText}</text></svg>`;
+  
+    const svgFile = `
+      <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+        ${shape}
+        <text fill="${logoColor}" x="150" y="140" text-anchor="middle" font-size="30">${logoText}</text>
+      </svg>
+    `;
+  
     return svgFile;
   }
 
-  function getShape(logoShape, shapeColor) {
+function getShape(logoShape, shapeColor) {
     switch (logoShape) {
         case 'Square':
             return `<rect fill="${shapeColor}" width="80" height="80" x="10" y="10"/>`;
@@ -57,10 +64,8 @@ inquirer
     }
   }
 
-
-  function saveSVG(svgFile) {
+function saveSVG(svgFile) {
     fs.writeFile('myLogo.svg', svgFile, (err) => {
         if (err) throw err;
-        console.log("File has been saved as myLogo.svg");
     });
-  }
+}
