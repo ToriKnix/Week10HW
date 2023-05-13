@@ -36,7 +36,13 @@ inquirer
 
   function generateSVG(answers) {
     const {logoText, logoColor, logoShape, shapeColor} = answers;
+    const svgFile = `<svg><rect fill="${shapeColor}" width="100" height="100"/><text fill="${logoColor}" x="20" y="60">${logoText}</text></svg>`;
+    return svgFile;
   }
-    // Create SVG file code
-    // Generate SVG file based on user input
-    // Save SVG file as .svg file
+
+  function saveSVG(svgFile) {
+    fs.writeFile('myLogo.svg', svgFile, (err) => {
+        if (err) throw err;
+        console.log("File has been saved as myLogo.svg");
+    });
+  }
