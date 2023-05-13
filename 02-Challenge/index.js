@@ -1,6 +1,9 @@
 const inquirer = require('inquirer@8.2.4');
 const fs = require('fs');
 
+const colorChoices = ["Blue", "Red", "White", "Orange", "Green", "Black"];
+const shapeChoices = ["Square", "Circle", "Triangle"];
+
 inquirer
   .prompt([
     {
@@ -13,20 +16,20 @@ inquirer
       type: 'list',
       name: 'logoColor',
       message: 'Choose the color that you would like for your logo.',
-      choices: [ 'Blue', 'Red', 'Green',]
+      choices: colorChoices
     },
     {
       type: 'list',
       name: 'logoShape',
       message: 'Next, choose the shape that you would like for your logo.',
-      choices: ['Square', 'Circle', 'Triangle']
+      choices: shapeChoices
     },
     {
         type: 'list',
         name: 'shapeColor',
         message: 'Choose what color of shape you would like for your logo.',
-        choices: ['Orange', 'Yellow', 'Red',]
-      }
+        choices: colorChoices
+    }
   ])
   .then((answers) => {
     const svg = generateSVG(answers);
@@ -36,6 +39,7 @@ inquirer
 
   function generateSVG(answers) {
     const {logoText, logoColor, logoShape, shapeColor} = answers;
+    const shape = getShape(logoShape, shapeColor);
     const svgFile = `<svg><rect fill="${shapeColor}" width="100" height="100"/><text fill="${logoColor}" x="20" y="60">${logoText}</text></svg>`;
     return svgFile;
   }
