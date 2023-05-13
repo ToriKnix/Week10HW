@@ -1,4 +1,5 @@
 const inquirer = require('inquirer@8.2.4');
+const fs = require('fs');
 
 inquirer
   .prompt([
@@ -28,9 +29,14 @@ inquirer
       }
   ])
   .then((answers) => {
+    const svg = generateSVG(answers);
+    saveSVG(svgFile);
     console.log(answers);
-
   });
+
+  function generateSVG(answers) {
+    const {logoText, logoColor, logoShape, shapeColor} = answers;
+  }
     // Create SVG file code
     // Generate SVG file based on user input
     // Save SVG file as .svg file
