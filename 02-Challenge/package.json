@@ -1,0 +1,12 @@
+{
+    "name": "logoGenerator",
+    "version": "1.0.0",
+    "description": "A command line application that saves svg files using Node.js",
+    "main": "index.js",
+    "author": "Blaine Duran",
+    "license": "MIT",
+    "dependencies": {
+      "inquirer": "^8.2.4"
+    }
+  }
+  
