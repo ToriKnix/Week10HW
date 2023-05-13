@@ -44,6 +44,20 @@ inquirer
     return svgFile;
   }
 
+  function getShape(logoShape, shapeColor) {
+    switch (logoShape) {
+        case 'Square':
+            return `<rect fill="${shapeColor}" width="80" height="80" x="10" y="10"/>`;
+        case 'Circle':
+            return `<circle fill="${shapeColor}" cx="50" cy="50" r="40"/>`;
+        case 'Triangle':
+            return `<polygon fill="${shapeColor}" points="50,10 90,90 10,90"/>`;
+        default:
+            return '';
+    }
+  }
+
+
   function saveSVG(svgFile) {
     fs.writeFile('myLogo.svg', svgFile, (err) => {
         if (err) throw err;
