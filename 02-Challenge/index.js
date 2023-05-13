@@ -19,7 +19,7 @@ inquirer
       name: 'logoShape',
       message: 'Next, choose the shape that you would like for your logo.',
       choices: ['Square', 'Circle', 'Triangle']
-    }
+    },
     {
         type: 'list',
         name: 'shapeColor',
