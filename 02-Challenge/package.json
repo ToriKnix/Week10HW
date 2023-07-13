@@ -1,5 +1,13 @@
 {
+  "name": "02-Challenge",
+  "version": "1.0.0",
+  "lockfileVersion": 3,
+  "requires": true,
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
+    "fs": "^0.0.1-security",
     "inquirer": "^8.2.4"
   }
 }
